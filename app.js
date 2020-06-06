@@ -63,7 +63,7 @@ const options = {
     'x-api-key': 'eluBm1haTR4aYvXY'
   }
 };
-var start = null;
+var time = null;
 startLogging();
 interval = setInterval(() => {
   startLogging();
@@ -71,20 +71,21 @@ interval = setInterval(() => {
 
 
 function startLogging() {
-  start = Date.now();
-  console.log(start + ' : start Update DB');
+  time = Date.now();
+  console.log(time + ' : start Update DB');
 
   request(options, function (err, response, body) {
     var obj = JSON.parse(body);
     console.log(obj.length);
     obj.forEach(doc => {
+      doc.timestamp = time;
       var price = new Price(doc);
 
       price.save(function (err, object) {
         if (err) {
           return console.log(err);
         }
-        console.log('[' + start + '] item name: ' + object.name + ' , logging success');
+        console.log('[' + time + '] item name: ' + object.name + ' , logging success');
       });
     });
   })

@@ -20,6 +20,7 @@ var userSchema = {
   wikiLink: 'String',
   img: 'String',
   imgBig: 'String',
-  reference: 'String'
+  reference: 'String',
+  timestamp: 'Number'
 };
 module.exports = mongoose.model('price', userSchema);
