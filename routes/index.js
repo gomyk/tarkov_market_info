@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 router.get('/db', function (req, res, next) {
   Price.find({}, ['name', 'price'], {
     skip: 0, // Starting Row
-    limit: 100, // Ending Row
+    //limit: 100, // Ending Row
     sort: {
       time: -1,
       price: -1
