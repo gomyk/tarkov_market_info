@@ -29,7 +29,7 @@ router.get('/db', function (req, res, next) {
 });
 
 router.get('/db/latest', function(req, res, next) {
-    Price.find({},['name','shortName','traderName','traderPrice','marketPrice','icon','timestamp'], {
+    Price.find({},['name','shortName','traderName','traderPrice','price','icon','timestamp','updated'], {
         skip: 0,
         limit: 2000,
         sort: {
