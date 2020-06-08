@@ -70,7 +70,7 @@ interval = setInterval(() => {
 }, 1000 * 60 * 60 * 2); //2 hours
 
 var download = function(uri, filename, callback) {
-    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+    request({ uri: uri }).pipe(fs.createWriteStream(filename)).on('close', callback);
 };
 
 function startLogging() {
