@@ -67,7 +67,7 @@ var time = null;
 startLogging();
 interval = setInterval(() => {
     startLogging();
-}, 1000 * 20); //2 hours
+}, 1000 * 60 * 60 * 20); //2 hours
 
 function startLogging() {
     time = Date.now();
