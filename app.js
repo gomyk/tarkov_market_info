@@ -19,7 +19,7 @@ var app = express();
 var db = mongoose.connection;
 
 db.on('error', console.error);
-db.once('open', function() {
+db.once('open', function () {
     console.log("Connected to mongo server");
 });
 
@@ -42,12 +42,12 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -67,19 +67,19 @@ var time = null;
 startLogging();
 interval = setInterval(() => {
     startLogging();
-}, 1000 * 60 * 60 * 2); //2 hours
+}, 1000 * 20); //2 hours
 
 function startLogging() {
     time = Date.now();
     console.log(time + ' : start Update DB');
 
-    request(options, function(err, response, body) {
+    request(options, function (err, response, body) {
         var obj = JSON.parse(body);
         console.log(obj.length);
         obj.forEach(doc => {
             doc.timestamp = time;
             var price = new Price(doc);
-            price.save(function(err, object) {
+            price.save(function (err, object) {
                 if (err) {
                     return console.log(err);
                 }
