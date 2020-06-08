@@ -14,7 +14,8 @@
                     "name": "icon",
                     "title": "icon",
                     "style": {
-                        "width": "20px"
+                        "height": "80px",
+                        "width": "80px"
                     },
                     "formatter": function(value) {
                         console.log(value);
@@ -78,7 +79,7 @@
                         "vertical-align": "middle"
                     }
                 }],
-                "rows": $.get('http://tarkov-market.koreasouth.cloudapp.azure.com:3000/db')
+                "rows": $.get('http://tarkov-market.koreasouth.cloudapp.azure.com:3000/db/latest')
             });
         </script>
     </table>
