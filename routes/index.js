@@ -27,4 +27,21 @@ router.get('/db', function (req, res, next) {
     res.send(200, doc);
   });
 });
+
+router.get('/db/latest', function(req, res, next) {
+    Price.find.distinct('name', {}, {
+        sort: {
+            timestamp: -1
+        }
+    }, function(err, doc) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+            return;
+        }
+        res.send(200, doc);
+    });
+});
 module.exports = router;
+
+
