@@ -80,6 +80,19 @@
                         return "";
                     }
                 }, {
+                    "name": "benefit",
+                    "title": "benefit",
+                    "style": {
+                        "text-align": "center",
+                        "vertical-align": "middle"
+                    },
+                    "formatter": function(value) {
+                        if (value) {
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ₽';
+                        }
+                        return "";
+                    }
+                }, {
                     "name": "point",
                     "title": "point",
                     "style": {
@@ -107,6 +120,7 @@
                             a_p = 0.0;
                         }
                         a.point = a_p;
+                        a.benefit = a.price - a.traderPrice;
                     });
                     return data.sort(customSort);
                 })
