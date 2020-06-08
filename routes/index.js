@@ -29,7 +29,7 @@ router.get('/db', function (req, res, next) {
 });
 
 router.get('/db/latest', function(req, res, next) {
-    Price.find().distinct('name', function(err, doc) {
+    Price.find().distinct(function(err, doc) {
         if (err) {
             console.log(err);
             res.send(500, err);
