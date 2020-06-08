@@ -70,9 +70,7 @@ interval = setInterval(() => {
 }, 1000 * 60 * 60 * 2); //2 hours
 
 var download = function(uri, filename, callback) {
-    request.head(uri, function(err, res, body) {
-        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-    });
+    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
 };
 
 function startLogging() {
@@ -85,7 +83,7 @@ function startLogging() {
         obj.forEach(doc => {
             doc.timestamp = time;
             var price = new Price(doc);
-            download(doc.icon, doc.name + '.png', function() {
+            download(doc.icon, './public/images/' + doc.name + '.png', function() {
                 console.log(doc.name + ' done..');
             });
             price.save(function(err, object) {
