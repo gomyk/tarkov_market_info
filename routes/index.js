@@ -12,12 +12,12 @@ router.get('/', function (req, res, next) {
 
 router.get('/db', function (req, res, next) {
   Price.find({}, {
-    skip: 0, // Starting Row
+    skip: 0 // Starting Row
     //limit: 100, // Ending Row
-    sort: {
-      time: -1,
-      price: -1
-    }
+//     sort: {
+//       time: -1,
+//       price: -1
+//     }
   }, function (err, doc) {
     if (err) {
       console.log(err);
