@@ -1,8 +1,36 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.btn-group-sm .btn-fab {
+    position: fixed !important;
+    right: 29px;
+}
+
+.btn-group .btn-fab {
+    position: fixed !important;
+    right: 20px;
+}
+
+#main {
+    bottom: 20px;
+}
+
+#mail {
+    bottom: 80px
+}
+
+#sms {
+    bottom: 125px
+}
+
+#autre {
+    bottom: 170px
+}
+
+.small_size {
+    max-width: 20px;
+    min-width: 20px;
+    width: 20px;
 }
