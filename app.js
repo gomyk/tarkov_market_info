@@ -69,10 +69,6 @@ interval = setInterval(() => {
     startLogging();
 }, 1000 * 60 * 60 * 2); //2 hours
 
-var download = function(uri, filename, callback) {
-    request({ uri: uri }).pipe(fs.createWriteStream(filename)).on('close', callback);
-};
-
 function startLogging() {
     time = Date.now();
     console.log(time + ' : start Update DB');
@@ -83,9 +79,6 @@ function startLogging() {
         obj.forEach(doc => {
             doc.timestamp = time;
             var price = new Price(doc);
-            download(doc.icon, './public/images/' + doc.name + '.png', function() {
-                console.log(doc.name + ' done..');
-            });
             price.save(function(err, object) {
                 if (err) {
                     return console.log(err);
