@@ -1,11 +1,97 @@
+<!DOCTYPE html>
 <html>
-
-  <head>
-
-  </head>
-
-  <body>
-    <h1>Hello, Tarkov</h1>
-  </body>
-
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="javascripts/footable.js"></script>
+<link rel='stylesheet' href='/stylesheets/footable.bootstrap.css' />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<div>
+    <table class="table" data-paging="true" data-filtering="true" data-sorting="true" data-sort-value="timestamp">
+        <script>
+            $('.table').footable({
+                "columns": [{
+                    "name": "icon",
+                    "title": "icon",
+                    "style": {
+                        "width": "20px"
+                    },
+                    "formatter": function(value) {
+                        console.log(value);
+                        if (value) {
+                            return '<img src=' + value + '/>';
+                        }
+                        return "";
+                    }
+                }, {
+                    "name": "name",
+                    "title": "name",
+                    "style": {
+                        "text-align": "center",
+                        "vertical-align": "middle"
+                    }
+                }, {
+                    "name": "shortName",
+                    "title": "shortName",
+                    "style": {
+                        "text-align": "center",
+                        "vertical-align": "middle"
+                    }
+                }, {
+                    "name": "traderName",
+                    "title": "traderName",
+                    "style": {
+                        "text-align": "center",
+                        "vertical-align": "middle"
+                    }
+                }, {
+                    "name": "traderPrice",
+                    "title": "traderPrice",
+                    "style": {
+                        "text-align": "center",
+                        "vertical-align": "middle"
+                    },
+                    "formatter": function(value) {
+                        if (value) {
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ₽';
+                        }
+                        return "";
+                    }
+                }, {
+                    "name": "price",
+                    "title": "market-price",
+                    "style": {
+                        "text-align": "center",
+                        "vertical-align": "middle"
+                    },
+                    "formatter": function(value) {
+                        if (value) {
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ₽';
+                        }
+                        return "";
+                    }
+                }, {
+                    "name": "updated",
+                    "title": "updated",
+                    "style": {
+                        "text-align": "center",
+                        "vertical-align": "middle"
+                    }
+                }],
+                "rows": $.get('/http://tarkov-market.koreasouth.cloudapp.azure.com:3000/db')
+            });
+        </script>
+    </table>
+    <div class="btn-group">
+        <a onclick="download_db()" class="btn btn-info btn-fab" id="main">
+            <i class="material-icons">
+                <svg  height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 13h-3V3h-2v10H8l4 4 4-4zM4 19v2h16v-2H4z"/></svg>
+            </i>
+        </a>
+    </div>
+</div>
+<script>
+    function download_db() {
+        document.location = "http://tarkov-market.koreasouth.cloudapp.azure.com:3000/db";
+    }
+</script>
