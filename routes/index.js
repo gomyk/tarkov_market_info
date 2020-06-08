@@ -20,6 +20,7 @@ router.get('/db', function (req, res, next) {
     }
   }, function (err, doc) {
     if (err) {
+      console.log(err);
       res.send(500, err);
       return;
     }
