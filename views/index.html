@@ -2,7 +2,7 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/javascripts/footable.js"></script>
+<script src="/footable.js"></script>
 <link rel='stylesheet' href='/stylesheets/footable.bootstrap.css' />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -13,13 +13,6 @@
             return 0
         }
         return a.point > b.point ? -1 : 1;
-    }
-
-    function getData() {
-        $.get('/tarkov.json', function(data) {
-            console.log(data);
-            return
-        });
     }
 </script>
 <div>
@@ -34,7 +27,6 @@
                         "width": "80px"
                     },
                     "formatter": function(value) {
-                        console.log(value);
                         if (value) {
                             return '<img src=' + value + ' />';
                         }
@@ -109,7 +101,6 @@
                     }
                 }],
                 "rows": $.get('http://tarkov-market.koreasouth.cloudapp.azure.com:3000/db/latest', function(data) {
-                    console.log(data);
                     data.forEach(a => {
                         var a_p = (a.price + 0.0001) / (a.traderPrice + 0.0001);
                         if (a.traderPrice < 10) {
